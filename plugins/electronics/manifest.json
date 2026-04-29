@@ -1,0 +1,11 @@
+{
+    "name": "electronics_parts",
+    "version": "1.1.0",
+    "author": "ARIA Community",
+    "description": "Electronics components database with automatic part detection.",
+    "permissions": ["filesystem_read"],
+    "tools": ["electronics_parts"],
+    "commands": ["/electronics"],
+    "hooks": ["on_message"],
+    "web_widgets": ["electronics_search"]
+}

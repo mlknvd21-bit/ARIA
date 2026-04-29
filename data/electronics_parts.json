@@ -1,0 +1,99 @@
+{
+  "2n2222": {
+    "type": "NPN Transistor",
+    "package": "TO-92",
+    "vce_max": "40V",
+    "ic_max": "600mA",
+    "hfe": "100-300",
+    "alternatives": ["BC547", "2N3904", "S8050", "PN2222"],
+    "uses": "General purpose switching and amplification"
+  },
+  "bc547": {
+    "type": "NPN Transistor",
+    "package": "TO-92",
+    "vce_max": "45V",
+    "ic_max": "100mA",
+    "hfe": "110-800",
+    "alternatives": ["2N2222", "BC548", "2N3904", "S8050"],
+    "uses": "Low-power switching, sensor circuits"
+  },
+  "2n3904": {
+    "type": "NPN Transistor",
+    "package": "TO-92",
+    "vce_max": "40V",
+    "ic_max": "200mA",
+    "hfe": "100-300",
+    "alternatives": ["2N2222", "BC547", "S8050"],
+    "uses": "General purpose, RF circuits"
+  },
+  "irfz44n": {
+    "type": "N-Channel MOSFET",
+    "package": "TO-220",
+    "vds_max": "55V",
+    "id_max": "49A",
+    "rds_on": "17.5mΩ",
+    "alternatives": ["IRF540", "IRLZ44N", "STP55NF06", "FQP30N06L"],
+    "uses": "High-current switching, motor control, power supplies"
+  },
+  "irf540": {
+    "type": "N-Channel MOSFET",
+    "package": "TO-220",
+    "vds_max": "100V",
+    "id_max": "28A",
+    "rds_on": "77mΩ",
+    "alternatives": ["IRFZ44N", "IRFZ48N", "STP55NF06"],
+    "uses": "Power supplies, inverters, DC-DC converters"
+  },
+  "1n4007": {
+    "type": "Rectifier Diode",
+    "package": "DO-41",
+    "vrm_max": "1000V",
+    "if_avg": "1A",
+    "vf": "1.1V",
+    "alternatives": ["1N4001", "1N4004", "1N5408", "HER108"],
+    "uses": "AC to DC rectification, reverse polarity protection"
+  },
+  "1n4148": {
+    "type": "Small Signal Diode",
+    "package": "DO-35",
+    "vrm_max": "100V",
+    "if_avg": "200mA",
+    "vf": "1V",
+    "alternatives": ["1N914", "1N4448", "BAV99"],
+    "uses": "High-speed switching, signal clipping"
+  },
+  "ne555": {
+    "type": "Timer IC",
+    "package": "DIP-8 / SOP-8",
+    "supply_voltage": "4.5V to 16V",
+    "frequency_max": "500kHz",
+    "alternatives": ["LM555", "TLC555", "7555 (CMOS)", "SE555"],
+    "uses": "Oscillators, timers, PWM generators, pulse generation"
+  },
+  "lm7805": {
+    "type": "Voltage Regulator IC",
+    "package": "TO-220",
+    "output_voltage": "5V",
+    "max_current": "1.5A",
+    "input_max": "35V",
+    "alternatives": ["LM340T-5", "UA7805", "MC7805", "AMS1117-5.0 (SMD)"],
+    "uses": "5V power supply, microcontroller regulation"
+  },
+  "lm358": {
+    "type": "Operational Amplifier IC",
+    "package": "DIP-8 / SOP-8",
+    "supply_voltage": "3V to 32V",
+    "gain_bandwidth": "1MHz",
+    "alternatives": ["LM324 (Quad)", "MC1458", "TL072", "NE5532 (audio)"],
+    "uses": "Sensor amplifiers, comparators, active filters"
+  },
+  "arduino_uno": {
+    "type": "Microcontroller Board",
+    "mcu": "ATmega328P",
+    "digital_pins": "14 (6 PWM)",
+    "analog_pins": "6",
+    "flash": "32KB",
+    "alternatives": ["Arduino Nano", "ESP32 DevKit", "STM32 Blue Pill", "Raspberry Pi Pico"],
+    "uses": "Prototyping, IoT, robotics, education"
+  }
+}

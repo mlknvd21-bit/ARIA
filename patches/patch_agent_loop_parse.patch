@@ -1,0 +1,32 @@
+--- core/agent_loop.py.old
++++ core/agent_loop.py
+@@ -6,7 +6,7 @@
+ 
+ class AgentLoop:
+     def __init__(self, provider, history: ConversationHistory):
+-        max_iterations = 5
++        max_iterations = 8
+         ...
+         # (same init code, just increase the max iterations in the for loop)
+     ...
+@@ -20,7 +20,9 @@
+                     params = {}
+                     for line in lines:
+                         if line.startswith("tool:"):
+                             tool_name = line.split("tool:")[1].strip()
+-                        elif ":" in line and not line.startswith("params:"):
++                            continue
++                        if ":" in line and not line.startswith("params:"):
+                             key, val = line.split(":", 1)
+                             params[key.strip()] = val.strip()
+                     
++                    # Validate required action for filesystem tool
++                    if tool_name == "filesystem" and "action" not in params:
++                        observation = "[Error] filesystem tool requires 'action' parameter (read/write/list/delete/mkdir)."
++                    else:
++                        tool = self.tools.get(tool_name)
++                        observation = tool.execute(params) if tool else "Tool not found."
+-                    if tool_name in self.tools:
+-                        tool = self.tools[tool_name]
+-                        observation = tool.execute(params)
+-                        ...

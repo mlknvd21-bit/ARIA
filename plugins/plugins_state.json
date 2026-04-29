@@ -1,0 +1,14 @@
+{
+  "electronics_parts": {
+    "enabled": true,
+    "version": "1.0.0"
+  },
+  "weather_plugin": {
+    "enabled": true,
+    "version": "1.0.0"
+  },
+  "quran_hadith": {
+    "enabled": true,
+    "version": "1.0.0"
+  }
+}

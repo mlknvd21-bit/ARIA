@@ -1,0 +1,154 @@
+{
+  "aria/config/defaults.yaml": {
+    "size": 46,
+    "mtime": 1777070162.5985284
+  },
+  "aria/config/loader.py": {
+    "size": 1651,
+    "mtime": 1777068860.2345293
+  },
+  "aria/config/providers.yaml": {
+    "size": 364,
+    "mtime": 1777263530.9121397
+  },
+  "aria/config/__pycache__/loader.cpython-313.pyc": {
+    "size": 3489,
+    "mtime": 1777069592.4785287
+  },
+  "aria/data/memory.db": {
+    "size": 32768,
+    "mtime": 1777094486.5329797
+  },
+  "aria/data/electronics_parts.json": {
+    "size": 2958,
+    "mtime": 1777229462.0105863
+  },
+  "aria/data/model_descriptions.json": {
+    "size": 1761,
+    "mtime": 1777237592.1745803
+  },
+  "aria/plugins/loader.py": {
+    "size": 4020,
+    "mtime": 1777260813.1961417
+  },
+  "aria/plugins/manager.py": {
+    "size": 3662,
+    "mtime": 1777262503.4481404
+  },
+  "aria/plugins/plugins_state.json": {
+    "size": 216,
+    "mtime": 1777272931.3098645
+  },
+  "aria/plugins/electronics/manifest.json": {
+    "size": 359,
+    "mtime": 1777260919.7961416
+  },
+  "aria/plugins/electronics/__init__.py": {
+    "size": 94,
+    "mtime": 1777260853.4081416
+  },
+  "aria/plugins/electronics/tool.py": {
+    "size": 3461,
+    "mtime": 1777264488.780139
+  },
+  "aria/plugins/electronics/__pycache__/__init__.cpython-313.pyc": {
+    "size": 351,
+    "mtime": 1777260936.3841417
+  },
+  "aria/plugins/electronics/__pycache__/tool.cpython-313.pyc": {
+    "size": 5812,
+    "mtime": 1777264504.592139
+  },
+  "aria/plugins/__pycache__/loader.cpython-313.pyc": {
+    "size": 5572,
+    "mtime": 1777260935.8441415
+  },
+  "aria/plugins/__pycache__/manager.cpython-313.pyc": {
+    "size": 6510,
+    "mtime": 1777262514.2041404
+  },
+  "aria/plugins/weather/manifest.json": {
+    "size": 305,
+    "mtime": 1777266915.3881764
+  },
+  "aria/plugins/weather/__init__.py": {
+    "size": 70,
+    "mtime": 1777266915.4081764
+  },
+  "aria/plugins/weather/tool.py": {
+    "size": 2087,
+    "mtime": 1777267397.256176
+  },
+  "aria/plugins/weather/__pycache__/__init__.cpython-313.pyc": {
+    "size": 331,
+    "mtime": 1777266954.5641763
+  },
+  "aria/plugins/weather/__pycache__/tool.cpython-313.pyc": {
+    "size": 3290,
+    "mtime": 1777267412.2441761
+  },
+  "aria/plugins/quran_hadith/manifest.json": {
+    "size": 365,
+    "mtime": 1777272930.9938645
+  },
+  "aria/plugins/quran_hadith/__init__.py": {
+    "size": 78,
+    "mtime": 1777272931.0338647
+  },
+  "aria/plugins/quran_hadith/tool.py": {
+    "size": 13439,
+    "mtime": 1777275425.8965437
+  },
+  "aria/plugins/quran_hadith/data/quran_data.json": {
+    "size": 2269,
+    "mtime": 1777272931.1458647
+  },
+  "aria/plugins/quran_hadith/data/hadith_data.json": {
+    "size": 1933,
+    "mtime": 1777272931.1458647
+  },
+  "aria/plugins/quran_hadith/__pycache__/__init__.cpython-313.pyc": {
+    "size": 342,
+    "mtime": 1777272954.4738646
+  },
+  "aria/plugins/quran_hadith/__pycache__/tool.cpython-313.pyc": {
+    "size": 21211,
+    "mtime": 1777275446.6005437
+  },
+  "aria_projects/test_app/index.html": {
+    "size": 39,
+    "mtime": 1777110450.8440325
+  },
+  "aria_projects/app_a_simple_calculator_web_app/index.html": {
+    "size": 2497,
+    "mtime": 1777140612.0692534
+  },
+  "aria_projects/app_a_simple_calculator_web_app/style.css": {
+    "size": 790,
+    "mtime": 1777139383.7425199
+  },
+  "aria_projects/app_a_simple_calculator_web_app/script.js": {
+    "size": 2133,
+    "mtime": 1777139383.7425199
+  },
+  "aria_projects/app_a_simple_calculator_web_app/README.md": {
+    "size": 79,
+    "mtime": 1777139383.7425199
+  },
+  "aria_projects/app_a_simple_hello_world_page_with_heading_h/index.html": {
+    "size": 369,
+    "mtime": 1777140927.7572532
+  },
+  "aria_projects/app_a_simple_hello_world_page_with_heading_h/style.css": {
+    "size": 289,
+    "mtime": 1777140927.7572532
+  },
+  "aria_projects/app_a_simple_hello_world_page_with_heading_h/script.js": {
+    "size": 243,
+    "mtime": 1777140927.7572532
+  },
+  "aria_projects/app_a_simple_hello_world_page_with_heading_h/README.md": {
+    "size": 162,
+    "mtime": 1777140927.7572532
+  }
+}

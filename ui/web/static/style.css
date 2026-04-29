@@ -1,0 +1,18 @@
+body { font-family: Arial, sans-serif; margin:0; padding:0; }
+.tabs { overflow:hidden; background:#333; }
+.tablink { background:#555; color:white; float:left; border:none; cursor:pointer; padding:14px 16px; font-size:17px; width:16.66%; }
+.tablink:hover { background:#777; }
+.tabcontent { display:none; padding:20px; }
+.card { border:1px solid #ccc; padding:15px; margin-bottom:10px; }
+button { padding:8px 16px; margin:2px; cursor:pointer; }
+
+/* Collapsible */
+.collapsible { background:#eee; color:#333; cursor:pointer; padding:12px 20px; margin-top:10px; border:1px solid #ccc; font-weight:bold; }
+.collapsible:hover { background:#ddd; }
+.collapse-content { max-height:0; overflow:hidden; transition: max-height 0.3s ease-out; background:#fafafa; border:0px solid #ccc; border-top:none; padding:0 20px; }
+
+/* Backup Table */
+.backup-table { width:100%; border-collapse:collapse; margin-top:10px; }
+.backup-table th, .backup-table td { border:1px solid #ccc; padding:8px; text-align:left; }
+.backup-table th { background:#f2f2f2; }
+.backup-table tr:hover { background:#f9f9f9; }

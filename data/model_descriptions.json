@@ -1,0 +1,20 @@
+{
+  "llama-3.3-70b-versatile": "Meta Llama 3.3 70B: Latest multilingual LLM. Best for general chat, reasoning, and long context. | Rate Limit: 1K RPD, 100K TPM",
+  "llama-3.1-8b-instant": "Llama 3.1 8B: Fast and lightweight, ideal for quick responses. | Rate Limit: 14.4K RPD, 500K TPM",
+  "mixtral-8x7b-32768": "Mixtral 8x7B: Mixture-of-Experts model. Excellent for complex reasoning and math.",
+  "gemma2-9b-it": "Gemma 2 9B: Google's efficient instruction-following model.",
+  "groq/compound": "Groq Compound: Specialized for tool use and RAG applications.",
+  "groq/compound-mini": "Groq Compound Mini: Smaller and faster version of Compound. | Rate Limit: 250 RPD, 70K TPM",
+  "allam-2-7b": "ALLAM 2 7B: Arabic-focused instruction model. | Rate Limit: 7K RPD, 6K TPM",
+  "openai/gpt-oss-120b": "GPT-OSS 120B: Large open-source model. Powerful reasoning and generation. | Rate Limit: 1K RPD, 200K TPM",
+  "openai/gpt-oss-20b": "GPT-OSS 20B: Smaller open-source model. Good balance of speed and quality. | Rate Limit: 1K RPD, 200K TPM",
+  "qwen/qwen3-32b": "Qwen 3 32B: Alibaba's multilingual model. Strong in Asian languages. | Rate Limit: 1K RPD, 500K TPM",
+  "meta-llama/llama-4-scout-17b-16e-instruct": "Llama 4 Scout 17B: Latest generation, fast and efficient. | Rate Limit: 1K RPD, 500K TPM",
+  "whisper-large-v3": "Whisper Large V3: Speech-to-text model, best for English transcription.",
+  "whisper-large-v3-turbo": "Whisper Large V3 Turbo: Faster speech-to-text, optimized for speed.",
+  "meta-llama/llama-prompt-guard-2-22m": "Prompt Guard 22M: Small safety model for content filtering. | Rate Limit: 14.4K RPD, 15K TPM",
+  "meta-llama/llama-prompt-guard-2-86m": "Prompt Guard 86M: Larger safety model for content moderation. | Rate Limit: 14.4K RPD, 15K TPM",
+  "canopylabs/orpheus-arabic-saudi": "Orpheus Arabic Saudi: Specialized for Saudi Arabic dialect.",
+  "canopylabs/orpheus-v1-english": "Orpheus V1 English: High-quality English speech synthesis.",
+  "openai/gpt-oss-safeguard-20b": "GPT-OSS Safeguard 20B: Safety-focused model for content filtering. | Rate Limit: 1K RPD, 200K TPM"
+}

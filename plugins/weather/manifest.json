@@ -1,0 +1,11 @@
+{
+    "name": "weather_plugin",
+    "version": "1.0.0",
+    "author": "Malik Naveed",
+    "description": "Get current weather for any city using wttr.in.",
+    "permissions": ["internet"],
+    "tools": ["weather_tool"],
+    "commands": ["/weather"],
+    "hooks": [],
+    "web_widgets": ["weather_card"]
+}
