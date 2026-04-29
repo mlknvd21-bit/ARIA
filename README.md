@@ -5,6 +5,10 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
+
+## 🔜 Coming Soon
+
+See [COMING_SOON.md](COMING_SOON.md) for a list of features under development.
 ## ✨ Key Features
 - 🧠 ReAct reasoning + Tool use
 - 🤖 Multi-Agent Swarm
