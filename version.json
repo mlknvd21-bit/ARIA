@@ -1,9 +1,5 @@
 {
   "version": "3.0.0",
   "release_date": "2026-04-29",
-  "status": {
-    "completed": ["ReAct", "Swarm", "Plugins", "Android Dashboard", "Backup", "Voice", "Weather", "Electronics", "Quran & Hadith Data", "MIT License", "Digital Watermark"],
-    "in_progress": ["!upgrade", "CSS Redesign (User)", "Cloud Sync", "Plugin Install", "Quran UI", "Tafsir Data", "Hadith Browse", "Auto-Backup", "Installation Wizard", "GitHub Pages"],
-    "notes": "CSS redesign is being done by the user. All other features are actively developed."
-  }
+  "notes": "ARIA initial public release with ReAct, Swarm, Plugins, Quran & Hadith, Android Dashboard, Backup, Voice, Weather, Electronics, and more."
 }

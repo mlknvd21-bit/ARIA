@@ -31,7 +31,7 @@ class QuranHadithTool(BaseTool):
         try:
             resp = httpx.get(url, timeout=10)
             return resp.json()
-        except:
+        except Exception:
             return {}
 
     def _list_surahs(self):

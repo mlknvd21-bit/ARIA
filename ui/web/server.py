@@ -13,6 +13,7 @@ from ui.web.routes.chat_api import chat_bp
 from ui.web.routes.settings_api import settings_bp
 from ui.web.routes.projects_api import projects_bp
 from ui.web.routes.swarm_api import swarm_bp, swarm_instance
+from ui.web.routes.bug_api import bug_bp
 from ui.web.routes.android_api import android_bp
 from ui.web.routes.plugin_api import plugin_bp
 
@@ -21,6 +22,7 @@ app.register_blueprint(chat_bp)
 app.register_blueprint(settings_bp)
 app.register_blueprint(projects_bp)
 app.register_blueprint(swarm_bp)
+app.register_blueprint(bug_bp)
 app.register_blueprint(android_bp)
 app.register_blueprint(plugin_bp)
 

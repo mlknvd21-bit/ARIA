@@ -5,101 +5,233 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ARIA Assistant</title>
     <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+<script>
+function toggleCollapse(id) {
+    var el = document.getElementById(id);
+    if (el.style.maxHeight && el.style.maxHeight !== "0px") {
+        el.style.maxHeight = "0px";
+        el.style.padding = "0 20px";
+    } else {
+        el.style.maxHeight = el.scrollHeight + "px";
+        el.style.padding = "20px";
+    }
+}
+</script>
+
+
+<script>
+function toggleCollapse(id) {
+    var el = document.getElementById(id);
+    if (el.style.maxHeight && el.style.maxHeight !== "0px") {
+        el.style.maxHeight = "0px";
+        el.style.padding = "0 20px";
+    } else {
+        el.style.maxHeight = el.scrollHeight + "px";
+        el.style.padding = "20px";
+    }
+}
+</script>
+
 </head>
 <body>
-    <div class="tabs">
-        <button class="tablink" onclick="openTab(event, 'chat')" id="defaultOpen">Chat</button>
-        <button class="tablink" onclick="openTab(event, 'swarm')">Swarm</button>
-        <button class="tablink" onclick="openTab(event, 'projects')">Projects</button>
-        <button class="tablink" onclick="openTab(event, 'android')">Android</button>
-        <button class="tablink" onclick="openTab(event, 'plugins')">Plugins</button>
-        <button class="tablink" onclick="openTab(event, 'quran-app')">📖 Quran</button>
-        <button class="tablink" onclick="openTab(event, 'settings')">Settings</button>
-    </div>
-
-    <!-- Chat -->
-    <div id="chat" class="tabcontent">
-        <h3>Chat with ARIA</h3>
-        <div id="chat-box"></div>
-        <input type="text" id="chat-input" placeholder="Type your message...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
-
-    <!-- Swarm -->
-    <div id="swarm" class="tabcontent">
-        <h3>Multi-Agent Swarm</h3>
-        <textarea id="swarm-input" placeholder="Your complex task..." rows="4" cols="60"></textarea><br>
-        <button onclick="runSwarm()">Execute</button>
-        <div id="swarm-result" style="margin-top:20px; white-space:pre-wrap; border:1px solid #ccc; padding:10px; max-height:400px; overflow-y:scroll;"></div>
-    </div>
-
-    <!-- Projects -->
-    <div id="projects" class="tabcontent">
-        <h3>Project Manager</h3>
-        <div id="projects-list"><p>Loading projects...</p></div>
-    </div>
-
-    <!-- Android -->
-    <div id="android" class="tabcontent">
-        <h3>Android Dashboard</h3>
-        <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
-            <div class="card"><h4>🔋 Battery</h4><button onclick="loadBattery()">Refresh</button><div id="battery-status"></div></div>
-            <div class="card"><h4>📨 SMS</h4><input id="sms-number" placeholder="Number"><textarea id="sms-text" placeholder="Message" rows="2"></textarea><button onclick="sendSms()">Send</button><div id="sms-result"></div></div>
-            <div class="card"><h4>🔔 Notification</h4><input id="notif-title" value="ARIA"><input id="notif-body" placeholder="Body"><button onclick="sendNotification()">Send</button><div id="notif-result"></div></div>
-            <div class="card"><h4>📷 Camera</h4><button onclick="takePhoto()">Take Photo</button><div id="camera-result"></div></div>
-            <div class="card"><h4>📶 WiFi Scan</h4><button onclick="loadWifiScan()">Scan</button><div id="wifi-scan-list"></div></div>
-            <div class="card"><h4>📡 WiFi Info</h4><button onclick="loadWifiConnection()">Get Info</button><div id="wifi-connection-info"></div></div>
-            <div class="card"><h4>🎵 Media</h4>
-                <button onclick="mediaControl('play')">Play</button><button onclick="mediaControl('pause')">Pause</button><button onclick="mediaControl('stop')">Stop</button><button onclick="mediaControl('next')">Next</button><button onclick="mediaControl('prev')">Prev</button><button onclick="mediaControl('info')">Info</button>
-                <div id="media-result"></div>
+    <div class="app-layout">
+        <!-- ===== SIDEBAR ===== -->
+        <nav class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <span class="brand-icon">🤖</span>
+                <span class="brand-text">ARIA</span>
             </div>
-            <div class="card"><h4>✉ SMS Inbox</h4><button onclick="loadSmsInbox()">Refresh</button><div id="sms-inbox-list"></div></div>
-            <div class="card"><h4>⏰ Alarm</h4><input id="alarm-time" placeholder="ms"><input id="alarm-title" placeholder="Title"><button onclick="setAlarm()">Set</button><div id="alarm-result"></div></div>
-            <div class="card"><h4>⏳ Schedule Notify</h4><input id="sched-time" placeholder="HH:MM"><input id="sched-msg" placeholder="Message"><button onclick="scheduleNotify()">Schedule</button><div id="sched-result"></div></div>
-            <div class="card"><h4>📍 Location</h4><button onclick="loadLocation()">Get Location</button><div id="location-info"></div></div>
-            <div class="card"><h4>🎤 Listen</h4><select id="stt-lang"><option value="en">English</option><option value="ur">Urdu</option></select><button onclick="startListening()">Start</button><div id="stt-result"></div></div>
-            <div class="card"><h4>🔊 Speak</h4><textarea id="tts-text" placeholder="Text"></textarea><select id="tts-lang"><option value="en">English</option><option value="ur">Urdu</option></select><button onclick="speakText()">Speak</button><div id="tts-result"></div></div>
-        </div>
-    </div>
+            <ul class="sidebar-menu">
+                <li><button class="sidebar-link active" onclick="navigateTo('chat', this)"><i class="fas fa-comment-dots"></i><span>Chat</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('swarm', this)"><i class="fas fa-braille"></i><span>Swarm</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('projects', this)"><i class="fas fa-folder-open"></i><span>Projects</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('android', this)"><i class="fas fa-mobile-alt"></i><span>Android</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('plugins', this)"><i class="fas fa-puzzle-piece"></i><span>Plugins</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('quran-app', this)"><i class="fas fa-book-open"></i><span>Quran</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('debugger', this)"><i class="fas fa-bug"></i><span>Debugger</span></button></li>
+                <li><button class="sidebar-link" onclick="navigateTo('settings', this)"><i class="fas fa-cog"></i><span>Settings</span></button></li>
+            </ul>
+            <div class="sidebar-footer"><small>by Malik Naveed</small></div>
+        </nav>
 
-    <!-- Plugins -->
-    <div id="plugins" class="tabcontent">
-        <h3>Plugin Manager</h3>
-        <div id="plugins-list"><p>Loading plugins...</p></div>
-        <hr>
-        <div id="plugins-widgets"></div>
-    </div>
-
-    <!-- Quran App (iframe to standalone app) -->
-    <div id="quran-app" class="tabcontent">
-        <iframe src="/quran" style="width:100%;height:600px;border:none;"></iframe>
-    </div>
-
-    <!-- Settings -->
-    <div id="settings" class="tabcontent">
-        <h3>Settings</h3>
-        <div class="collapsible" onclick="toggleCollapse('providers-section')">⚙️ Providers</div>
-        <div id="providers-section" class="collapse-content"><div id="providers-list">Loading...</div></div>
-        <div class="collapsible" onclick="toggleCollapse('models-section')">📋 Models</div>
-        <div id="models-section" class="collapse-content"><div id="models-list">Click Refresh</div><button onclick="loadModels()">Refresh Models</button></div>
-        <div class="collapsible" onclick="toggleCollapse('memory-section')">🧠 Memory</div>
-        <div id="memory-section" class="collapse-content"><div id="memory-list">Click Refresh</div><button onclick="loadMemory()">Refresh Memory</button></div>
-        <div class="collapsible" onclick="toggleCollapse('backup-section')">💾 Backup Management</div>
-        <div id="backup-section" class="collapse-content">
-            <button onclick="backupNow()" style="background:#4CAF50; color:white;">Create Backup</button>
-            <input id="backup-custom-name" placeholder="Custom name" style="margin-left:10px; padding:5px; width:200px;">
-            <div style="margin-top:15px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
-                <input type="text" id="backup-search" placeholder="🔍 Search by name..." style="padding:5px; width:200px;" oninput="filterBackups()">
-                <label>From:</label><input type="date" id="backup-date-from" style="padding:5px;" onchange="filterBackups()">
-                <label>To:</label><input type="date" id="backup-date-to" style="padding:5px;" onchange="filterBackups()">
-                <button onclick="clearBackupFilters()" style="padding:5px 10px;">Clear Filters</button>
+        <!-- ===== MAIN CONTENT ===== -->
+        <main class="main-content">
+            <!-- CHAT -->
+            <div id="chat" class="tabcontent active">
+                <header class="chat-header">
+                    <div class="user-info">
+                        <div class="avatar">👤</div>
+                        <h2>Chat with ARIA</h2>
+                    </div>
+                </header>
+                <div id="chat-box"></div>
+                <div class="input-area">
+                    <input type="text" id="chat-input" placeholder="Type your message...">
+                    <button class="send-btn" onclick="sendMessage()"><i class="fas fa-paper-plane"></i> Send</button>
+                </div>
             </div>
-            <div style="margin-top:5px; font-weight:bold;" id="backup-count">Total backups: 0</div>
-            <h4>Backup List</h4>
-            <div id="backup-list"><p>Loading backups...</p></div>
-        </div>
-    </div>
 
+            <!-- SWARM -->
+            <div id="swarm" class="tabcontent">
+                <h3>Multi-Agent Swarm</h3>
+                <textarea id="swarm-input" placeholder="Your complex task..." rows="4" style="width:100%; padding:10px; margin-bottom:10px;"></textarea>
+                <button onclick="runSwarm()" class="send-btn" style="width:100%;">Execute</button>
+                <div id="swarm-result" style="margin-top:20px; white-space:pre-wrap; border:1px solid #ccc; padding:10px; max-height:400px; overflow-y:auto;"></div>
+            </div>
+
+            <!-- PROJECTS -->
+            <div id="projects" class="tabcontent">
+                <h3>Project Manager</h3>
+                <div id="projects-list"><p>Loading projects...</p></div>
+            </div>
+
+            <!-- ANDROID DASHBOARD -->
+            <div id="android" class="tabcontent">
+                <h3>Android Dashboard</h3>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px;">
+                    <div class="card"><h4>🔋 Battery</h4><button onclick="loadBattery()">Refresh</button><div id="battery-status"></div></div>
+                    <div class="card"><h4>📨 SMS</h4><input id="sms-number" placeholder="Number"><textarea id="sms-text" placeholder="Message" rows="2"></textarea><button onclick="sendSms()">Send</button><div id="sms-result"></div></div>
+                    <div class="card"><h4>🔔 Notification</h4><input id="notif-title" value="ARIA"><input id="notif-body" placeholder="Body"><button onclick="sendNotification()">Send</button><div id="notif-result"></div></div>
+                    <div class="card"><h4>📷 Camera</h4><button onclick="takePhoto()">Take Photo</button><div id="camera-result"></div></div>
+                    <div class="card"><h4>📶 WiFi Scan</h4><button onclick="loadWifiScan()">Scan</button><div id="wifi-scan-list"></div></div>
+                    <div class="card"><h4>📡 WiFi Info</h4><button onclick="loadWifiConnection()">Get Info</button><div id="wifi-connection-info"></div></div>
+                    <div class="card"><h4>🎵 Media</h4>
+                        <button onclick="mediaControl('play')">Play</button><button onclick="mediaControl('pause')">Pause</button><button onclick="mediaControl('stop')">Stop</button><button onclick="mediaControl('next')">Next</button><button onclick="mediaControl('prev')">Prev</button><button onclick="mediaControl('info')">Info</button>
+                        <div id="media-result"></div>
+                    </div>
+                    <div class="card"><h4>✉ SMS Inbox</h4><button onclick="loadSmsInbox()">Refresh</button><div id="sms-inbox-list"></div></div>
+                    <div class="card"><h4>⏰ Alarm</h4><input id="alarm-time" placeholder="ms"><input id="alarm-title" placeholder="Title"><button onclick="setAlarm()">Set</button><div id="alarm-result"></div></div>
+                    <div class="card"><h4>⏳ Schedule Notify</h4><input id="sched-time" placeholder="HH:MM"><input id="sched-msg" placeholder="Message"><button onclick="scheduleNotify()">Schedule</button><div id="sched-result"></div></div>
+                    <div class="card"><h4>📍 Location</h4><button onclick="loadLocation()">Get Location</button><div id="location-info"></div></div>
+                    <div class="card"><h4>🎤 Listen</h4><select id="stt-lang"><option value="en">English</option><option value="ur">Urdu</option></select><button onclick="startListening()">Start</button><div id="stt-result"></div></div>
+                    <div class="card"><h4>🔊 Speak</h4><textarea id="tts-text" placeholder="Text"></textarea><select id="tts-lang"><option value="en">English</option><option value="ur">Urdu</option></select><button onclick="speakText()">Speak</button><div id="tts-result"></div></div>
+                </div>
+            </div>
+
+            <!-- PLUGINS -->
+            <div id="plugins" class="tabcontent">
+                <h3>Plugin Manager</h3>
+                <div id="plugins-list"><p>Loading plugins...</p></div>
+                <hr>
+                <div id="plugins-widgets"></div>
+            </div>
+
+            <!-- QURAN -->
+            <div id="quran-app" class="tabcontent">
+                <iframe src="/quran" style="width:100%; height:100%; border:none;"></iframe>
+            </div>
+
+            <!-- SETTINGS -->
+            <div id="debugger" class="tabcontent">
+                <h3>🐞 Bug Detector</h3>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:15px; margin-bottom:20px;">
+    <div class="card" style="cursor:pointer; text-align:center; padding:20px;" onclick="scanBugs()">
+        <div style="font-size:32px;">🔍</div>
+        <h4>Code Scan</h4>
+        <p style="font-size:12px; color:#666;">Static code bugs</p>
+    </div>
+    <div class="card" style="cursor:pointer; text-align:center; padding:20px;" onclick="scanRuntime()">
+        <div style="font-size:32px;">📊</div>
+        <h4>Runtime Errors</h4>
+        <p style="font-size:12px; color:#666;">4xx / 5xx errors</p>
+    </div>
+    <div class="card" style="cursor:pointer; text-align:center; padding:20px;" onclick="scanMissingFiles()">
+        <div style="font-size:32px;">📁</div>
+        <h4>Missing Files</h4>
+        <p style="font-size:12px; color:#666;">Frequent 404 errors</p>
+    </div>
+    <div class="card" style="cursor:pointer; text-align:center; padding:20px;" onclick="scanStatusSummary()">
+        <div style="font-size:32px;">📈</div>
+        <h4>Status Summary</h4>
+        <p style="font-size:12px; color:#666;">Request counts</p>
+    </div>
+</div>
+                <div id="bugs-result"></div>
+            </div>
+
+            <!-- SETTINGS -->
+            <div id="settings" class="tabcontent">
+                <h3>Settings</h3>
+                <div class="collapsible" onclick="toggleCollapse('providers-section')">⚙️ Providers</div>
+                <div id="providers-section" class="collapse-content">
+                    <div id="providers-list">Loading...</div>
+                </div>
+
+                <div class="collapsible" onclick="toggleCollapse('models-section')">📋 Models</div>
+                <div id="models-section" class="collapse-content">
+                    <div id="models-list">Click Refresh Models inside</div>
+                    <button onclick="loadModels()">Refresh Models</button>
+                </div>
+
+                <div class="collapsible" onclick="toggleCollapse('memory-section')">🧠 Memory</div>
+                <div id="memory-section" class="collapse-content">
+                    <div id="memory-list">Click Refresh Memory inside</div>
+                    <button onclick="loadMemory()">Refresh Memory</button>
+                </div>
+
+                <div class="collapsible" onclick="toggleCollapse('backup-section')">💾 Backup Management</div>
+                <div id="backup-section" class="collapse-content">
+                    <div style="margin-bottom:15px;">
+                        <button onclick="backupNow()" style="background:#4CAF50; color:white;">Create Backup</button>
+                        <input id="backup-custom-name" placeholder="Custom name (optional)" style="margin-left:10px; padding:5px; width:200px;">
+                    </div>
+                    <div style="margin-top:15px; display:flex; flex-wrap:wrap; gap:10px; align-items:center;">
+                        <input type="text" id="backup-search" placeholder="🔍 Search by name..." style="padding:5px; width:200px;" oninput="filterBackups()">
+                        <label>From:</label><input type="date" id="backup-date-from" style="padding:5px;" onchange="filterBackups()">
+                        <label>To:</label><input type="date" id="backup-date-to" style="padding:5px;" onchange="filterBackups()">
+                        <button onclick="clearBackupFilters()" style="padding:5px 10px;">Clear Filters</button>
+                    </div>
+                    <div style="margin-top:5px; font-weight:bold;" id="backup-count">Total backups: 0</div>
+                    <h4>Backup List</h4>
+                    <div id="backup-list"><p>Loading backups...</p></div>
+                </div>
+            </div>
+        </main>
+    </div>
     <script src="/static/script.js"></script>
+
+<script>
+// Ensure settings work regardless of external script load
+document.querySelector('.sidebar-link[onclick*="settings"]').addEventListener('click', function() {
+    setTimeout(function() {
+        if (typeof loadProviders === 'function') {
+            loadProviders(); loadModels(); loadMemory(); loadBackups();
+        }
+        // Force collapsible sections open for testing
+        var sections = ['providers-section','models-section','memory-section','backup-section'];
+        sections.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) {
+                el.style.maxHeight = el.scrollHeight + "px";
+                el.style.padding = "20px";
+            }
+        });
+    }, 300);
+});
+</script>
+
+
+<script>
+// Ensure settings work regardless of external script load
+document.querySelector('.sidebar-link[onclick*="settings"]').addEventListener('click', function() {
+    setTimeout(function() {
+        if (typeof loadProviders === 'function') {
+            loadProviders(); loadModels(); loadMemory(); loadBackups();
+        }
+        // Force collapsible sections open for testing
+        var sections = ['providers-section','models-section','memory-section','backup-section'];
+        sections.forEach(function(id) {
+            var el = document.getElementById(id);
+            if (el) {
+                el.style.maxHeight = el.scrollHeight + "px";
+                el.style.padding = "20px";
+            }
+        });
+    }, 300);
+});
+</script>
+
 </body>
 </html>

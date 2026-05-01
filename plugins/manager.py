@@ -26,7 +26,7 @@ class PluginManager:
                                 "enabled": True,
                                 "version": data.get("version", "?")
                             }
-                        except:
+                        except Exception:
                             pass
             with open(STATE_FILE, 'w') as f:
                 json.dump(default, f, indent=2)
@@ -59,7 +59,7 @@ class PluginManager:
                         "description": info.get("description", ""),
                         "enabled": enabled
                     })
-                except:
+                except Exception:
                     pass
         return result
 
@@ -90,6 +90,6 @@ class PluginManager:
                         info = json.load(f)
                     if info.get("name", "") == name:
                         return info
-                except:
+                except Exception:
                     pass
         return None

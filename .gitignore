@@ -1,0 +1,22 @@
+# Python compiled files
+__pycache__/
+*.pyc
+*.pyo
+
+# Backups
+backups/
+
+# Logs
+logs/
+
+# Environment secrets (اگر آپ کے پاس .env فائل ہے)
+.env
+
+# Optional: اگر config.yaml میں real keys نہیں تو اسے شامل نہ کریں
+# لیکن اگر keys ہو سکتی ہیں تو:
+# config.yaml
+
+# اگر کوئی tar.gz بیک اپ باقی رہ جائے
+*.tar.gz
+
+# آپ کسی اور حساس چیز کو یہاں لکھ سکتے ہیں

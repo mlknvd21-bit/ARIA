@@ -1,5 +1,6 @@
 from core.engine import Engine
 from core.builder import Builder
+from core.upgrader import Upgrader
 from core.swarm import Swarm
 from utils.backup import create_backup, list_backups, restore_backup
 from utils.logger import get_logger
@@ -17,6 +18,7 @@ class CLI:
         self.swarm = swarm
         self.running = True
         self.plugin_manager = PluginManager()
+        self.upgrader = Upgrader()
 
         self.commands = {
             "!exit": self.cmd_exit,
@@ -28,6 +30,9 @@ class CLI:
             "!backup": self.cmd_backup,
             "!restore": self.cmd_restore,
             "!swarm": self.cmd_swarm,
+            "!upgrade": self.cmd_upgrade,
+            "!version": self.cmd_version,
+            "!rollback": self.cmd_rollback,
             "/electronics": self.cmd_electronics,
             "/plugin": self.cmd_plugin,
         }
@@ -78,6 +83,9 @@ class CLI:
         print("  !backup                      - Backup all ARIA data")
         print("  !restore <filename>          - Restore a previous backup")
         print("  !swarm <task>                - Complex multi-agent task")
+        print("  !upgrade                     - Upgrade ARIA to latest version")
+        print("  !version                     - Show current version")
+        print("  !rollback                    - Rollback to previous version")
         print("  /electronics <part>          - Search electronics parts database")
         print("  /plugin [list|enable|disable|info] <name> - Plugin management")
         print("  /weather <city>              - Get weather for a city")
@@ -191,6 +199,70 @@ class CLI:
         try:
             restore_backup(filename); print("Backup restored successfully.")
         except Exception as e: print(f"Restore failed: {e}")
+
+    
+    def cmd_upgrade(self, args):
+        """Upgrade ARIA from GitHub."""
+        print("Checking for updates...")
+        available, new_version, notes = self.upgrader.check_for_update()
+        if not available:
+            print("✅ ARIA is already up to date (v" + self.upgrader.current_version + ").")
+            return
+        print(f"🔔 New version available: v{new_version}")
+        if notes:
+            print(f"   Notes: {notes}")
+        confirm = input("Proceed with upgrade? (y/N): ").strip().lower()
+        if confirm != 'y':
+            print("Upgrade cancelled.")
+            return
+        print("📦 Creating backup...")
+        backup = self.upgrader.backup_current()
+        if not backup:
+            print("❌ Backup failed. Upgrade aborted.")
+            return
+        print("⬇️ Downloading latest version...")
+        extracted = self.upgrader.download_and_extract()
+        if not extracted:
+            print("❌ Download failed. Upgrade aborted.")
+            return
+        print("🔄 Applying upgrade...")
+        if self.upgrader.apply_upgrade(extracted):
+            print("✅ Upgrade successful! ARIA will now restart.")
+            print("   Run 'ar' or 'arw' to start the new version.")
+            self.running = False
+        else:
+            print("❌ Upgrade failed. Restoring backup...")
+            self.upgrader.restore_backup()
+            print("✅ Backup restored. ARIA is back to previous version.")
+
+    def cmd_version(self, args):
+        """Show current ARIA version."""
+        print(f"ARIA version: {self.upgrader.current_version}")
+
+    def cmd_rollback(self, args):
+        """Rollback to a previous upgrade backup."""
+        backups = self.upgrader.list_backups()
+        if not backups:
+            print("No upgrade backups found.")
+            return
+        print("Available backups:")
+        for i, b in enumerate(backups[:5]):
+            print(f"  [{i+1}] {b}")
+        choice = input("Enter backup number (or 0 to cancel): ").strip()
+        if choice == "0" or not choice:
+            print("Rollback cancelled.")
+            return
+        try:
+            idx = int(choice) - 1
+            if 0 <= idx < len(backups):
+                ok, msg = self.upgrader.restore_backup(backups[idx])
+                if ok:
+                    print(f"✅ {msg}. Restart ARIA.")
+                    self.running = False
+                else:
+                    print(f"❌ {msg}")
+        except Exception:
+            print("Invalid choice.")
 
     def cmd_swarm(self, args):
         if not self.swarm: print("[Error] Swarm module not available."); return

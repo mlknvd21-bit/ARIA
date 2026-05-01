@@ -5,6 +5,7 @@ from tools.package_manager import PackageManagerTool
 from tools.memory import MemoryTool
 from tools.termux_api import TermuxAPITool
 from tools.web_search import WebSearchTool
+from tools.bug_detector import BugDetectorTool
 from core.history import ConversationHistory
 from core.memory import SemanticMemory
 from plugins.loader import PluginLoader
@@ -33,6 +34,7 @@ class AgentLoop:
             "memory": MemoryTool(memory) if memory else None,
             "termux_api": TermuxAPITool(),
             "web_search": WebSearchTool(),
+            "bug_detector": BugDetectorTool(),
         }
         # Add plugin tools
         for name, tool in self.plugin_loader.extra_tools.items():

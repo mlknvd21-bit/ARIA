@@ -4,6 +4,7 @@ from tools.package_manager import PackageManagerTool
 from tools.memory import MemoryTool
 from tools.termux_api import TermuxAPITool
 from tools.web_search import WebSearchTool
+from tools.bug_detector import BugDetectorTool
 from plugins.loader import PluginLoader
 from utils.logger import get_logger
 from utils.rate_limiter import RateLimiter
@@ -20,6 +21,7 @@ class Worker:
             "memory": MemoryTool(memory) if memory else None,
             "termux_api": TermuxAPITool(),
             "web_search": WebSearchTool(),
+            "bug_detector": BugDetectorTool(),
         }
         # Load plugin tools
         loader = PluginLoader()

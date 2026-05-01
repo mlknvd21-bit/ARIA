@@ -120,7 +120,7 @@ def do_list_backups():
                 size_kb = round(stat.st_size / 1024, 1)
                 import datetime
                 date_str = datetime.datetime.fromtimestamp(stat.st_mtime).strftime("%Y-%m-%d %H:%M:%S")
-            except:
+            except Exception:
                 size_kb = 0; date_str = "Unknown"
             result.append({"name": f, "size_kb": size_kb, "date": date_str})
         return jsonify(result)

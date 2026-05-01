@@ -1,18 +1,87 @@
-body { font-family: Arial, sans-serif; margin:0; padding:0; }
-.tabs { overflow:hidden; background:#333; }
-.tablink { background:#555; color:white; float:left; border:none; cursor:pointer; padding:14px 16px; font-size:17px; width:16.66%; }
-.tablink:hover { background:#777; }
-.tabcontent { display:none; padding:20px; }
-.card { border:1px solid #ccc; padding:15px; margin-bottom:10px; }
-button { padding:8px 16px; margin:2px; cursor:pointer; }
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Inter',sans-serif}
+html,body{height:100%;background:#F5F7FA}
 
-/* Collapsible */
-.collapsible { background:#eee; color:#333; cursor:pointer; padding:12px 20px; margin-top:10px; border:1px solid #ccc; font-weight:bold; }
-.collapsible:hover { background:#ddd; }
-.collapse-content { max-height:0; overflow:hidden; transition: max-height 0.3s ease-out; background:#fafafa; border:0px solid #ccc; border-top:none; padding:0 20px; }
+.app-layout{display:flex;height:100vh;overflow:hidden}
 
-/* Backup Table */
-.backup-table { width:100%; border-collapse:collapse; margin-top:10px; }
-.backup-table th, .backup-table td { border:1px solid #ccc; padding:8px; text-align:left; }
-.backup-table th { background:#f2f2f2; }
-.backup-table tr:hover { background:#f9f9f9; }
+/* Sidebar */
+.sidebar{width:220px;background:#1E2A38;color:white;display:flex;flex-direction:column;flex-shrink:0;transition:width 0.3s}
+.sidebar-brand{padding:20px;font-size:20px;font-weight:700;color:#008080;display:flex;align-items:center;gap:8px}
+.brand-icon{font-size:28px}
+.sidebar-menu{list-style:none;flex:1;padding:0 10px;overflow-y:auto}
+.sidebar-menu li{margin-bottom:4px}
+.sidebar-link{display:flex;align-items:center;width:100%;padding:12px 16px;background:transparent;color:#AAA;border:none;cursor:pointer;border-radius:8px;font-size:15px;transition:background 0.2s,color 0.2s}
+.sidebar-link i{width:20px;margin-right:10px;font-size:16px}
+.sidebar-link span{white-space:nowrap}
+.sidebar-link:hover{background:#2D3E50;color:#FFF}
+.sidebar-link.active{background:#008080;color:white}
+.sidebar-footer{padding:15px 20px;font-size:12px;color:#777;text-align:center}
+
+/* Main Content */
+.main-content{flex:1;overflow-y:auto;padding:0;height:100vh}
+.tabcontent{display:none;height:100%}
+.tabcontent.active{display:flex;flex-direction:column;height:100%}
+
+/* Chat */
+#chat.active{display:flex;flex-direction:column;height:100%}
+.chat-header{background:white;padding:15px 20px;display:flex;align-items:center;box-shadow:0 2px 10px rgba(0,0,0,0.05);flex-shrink:0}
+.user-info{display:flex;align-items:center;gap:10px}
+.avatar{background:#E1F5FE;width:40px;height:40px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-size:20px;border:2px solid #008080;flex-shrink:0}
+.chat-header h2{font-size:18px;color:#212121;margin:0}
+
+#chat-box{flex:1;overflow-y:auto;padding:20px;display:flex;flex-direction:column;gap:15px;background:#F5F7FA}
+
+.message-wrapper{display:flex;gap:10px;max-width:85%}
+.message-wrapper.user{align-self:flex-start}
+.message-wrapper.aria{align-self:flex-end;flex-direction:row-reverse}
+.avatar-small{background:#E1F5FE;color:#008080;width:30px;height:30px;border-radius:50%;display:flex;justify-content:center;align-items:center;font-weight:bold;border:1px solid #008080;flex-shrink:0}
+
+.bubble{padding:12px 16px;border-radius:12px;font-size:14px;color:#212121;line-height:1.4;word-wrap:break-word;position:relative}
+.user .bubble{background:#E1F5FE;border-bottom-left-radius:2px}
+.aria .bubble{background:#FFFFFF;box-shadow:0px 4px 10px rgba(0,0,0,0.05);border-bottom-right-radius:2px}
+.bubble strong{display:block;font-size:12px;margin-bottom:4px;color:#008080}
+.user .bubble strong{color:#212121}
+.time{font-size:10px;color:#616161;text-align:right;margin-top:5px}
+
+/* Message Actions */
+.msg-actions{display:flex;gap:6px;margin-top:6px;align-items:center;opacity:0.7;transition:opacity 0.2s}
+.bubble:hover .msg-actions{opacity:1}
+.action-btn{background:none;border:none;color:#616161;cursor:pointer;font-size:14px;padding:2px 4px;border-radius:4px;transition:color 0.2s,background 0.2s}
+.action-btn:hover{color:#008080;background:rgba(0,128,128,0.1)}
+.action-btn.liked{color:#008080}
+.action-btn.disliked{color:#cc0000}
+
+/* Input area — sticky bottom */
+.input-area{background:white;padding:15px;display:flex;gap:10px;align-items:center;box-shadow:0 -2px 10px rgba(0,0,0,0.02);flex-shrink:0}
+.input-area input{flex:1;padding:12px 15px;border:none;background:#F5F7FA;border-radius:25px;outline:none;font-size:14px}
+.send-btn{background:#008080;color:white;border:none;padding:12px 20px;border-radius:25px;cursor:pointer;font-weight:600;flex-shrink:0}
+.send-btn:active{transform:scale(0.95)}
+
+/* Other pages */
+#swarm,#projects,#android,#plugins,#quran-app,#settings{padding:20px; overflow-y:auto;}
+
+/* Settings */
+.collapsible{background:#eee;color:#333;cursor:pointer;padding:12px 20px;margin-top:10px;border:1px solid #ccc;font-weight:bold}
+.collapsible:hover{background:#ddd}
+.collapse-content{max-height:0;overflow:hidden;transition:max-height 0.3s ease-out;background:#fafafa;padding:0 20px}
+.backup-table{width:100%;border-collapse:collapse;margin-top:10px}
+.backup-table th,.backup-table td{border:1px solid #ccc;padding:8px;text-align:left}
+.backup-table th{background:#f2f2f2}
+.backup-table tr:hover{background:#f9f9f9}
+.card{border:1px solid #ccc;padding:15px;margin-bottom:10px;background:#FFFFFF;border-radius:12px;box-shadow:0px 4px 10px rgba(0,0,0,0.05)}
+button{padding:8px 16px;margin:2px;cursor:pointer;border-radius:6px;border:none}
+
+/* Responsive */
+@media(max-width:768px){
+  .sidebar{width:70px}
+  .sidebar .brand-text,.sidebar-link span,.sidebar-footer{display:none}
+  .sidebar-link{justify-content:center;padding:12px}
+  .sidebar-link i{margin-right:0;font-size:20px}
+  .main-content{padding:0}
+  .chat-header h2{font-size:16px}
+  .avatar{width:32px;height:32px;font-size:16px}
+  #chat-box{padding:12px;gap:10px}
+  .bubble{padding:10px 12px;font-size:13px}
+  .input-area input{padding:10px 12px;font-size:13px}
+  .send-btn{padding:10px 16px}
+}
